@@ -1,0 +1,120 @@
+body {
+	background-image: url('/../img/login-bg.jpg');
+	background-size: cover;
+	/* background-color: #F5FFFA; */
+	font-family: "Myriad Pro", tahoma, sans-serif;
+}
+
+h1 {
+	background-color: #F5F0ED;
+	color: #726B68;
+	font-family: courier, serif;
+	font-size: 35pt;
+}
+
+input {
+	color: #777777;
+	display: block;
+	border-radius: 10px;
+	font-size: 20pt;
+	position: relative;
+	top: 20px;
+}
+
+h3 {
+	color: #FD0001;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #F5FFFA;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+a {
+	background-color: #F5FFFA;
+	color: #777777;
+	font-size: 20pt;
+	margin: 50px 0 0 0;
+	position: relative;
+	padding: 20px 20px 20px 20px;
+	text-decoration: none;
+	top: 10px;
+}
+
+a:hover {
+	background-color: #A7FFD3;
+}
+
+p {
+	color: #ffffff;
+	margin: 0 0 0 0;
+}
+
+span {
+	color: #459AB7;
+}
+
+.log-in {
+	/* background-color: #FAEBD7; */
+	margin: 100px auto; */
+	min-height: 280px;
+	padding: 20px 0 50px 0;
+	text-align: center;
+	width: 700px;
+}
+
+.log-in-bg {
+	background-color: #999999;
+	min-height: 380px;
+	opacity: 0.2;
+	position: absolute;
+	width: 700px;
+	z-index: -1;
+}
+
+.email, .pass {
+	height: 50px;
+	margin: 0 auto 10px auto;
+	width: 50%;
+}
+
+.button {
+	background-color: #ABA1A0;
+	border-radius: 10px;
+	color: #ffffff;
+	font-family: "Lucida sans", sans-serif;
+	font-size: 20pt;
+	height: 50px;
+	margin: 40px auto 0 auto;
+	position: relative;
+	top: 25px;
+	width: 30%;
+}
+
+.button:hover {
+	background-color: #20566E;
+	color: #ffffff;
+}
+
+.button-fail {
+	background-color: #ABA1A0;
+	border-radius: 10px;
+	color: #ffffff;
+	font-family: "Lucida sans", sans-serif;
+	font-size: 20pt;
+	height: 50px;
+	margin: 40px auto 0 auto;
+	position: relative;
+	top: 30px;
+	width: 30%;
+	
+}
+
+.button-fail:hover {
+	background-color: #20566E;
+	color: #ffffff;
+}
