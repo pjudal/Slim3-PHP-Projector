@@ -30,31 +30,14 @@
 	    <p class="welcome_user">Welcome, <?php echo $_SESSION["current_user"];?>!</p>
 
 		<?php
-		$conn=mysqli_connect("localhost","root","","slim-mvc");
-		// Check connection
-		if (mysqli_connect_errno())	{
-			echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-
-		$stmt = $conn->prepare("SELECT EXISTS(SELECT 1 FROM projects)");
-		$stmt->execute();
-		$result = $stmt->get_result();
-
-		while ($row = $result->fetch_array(MYSQLI_NUM))
-	    {
-	        foreach ($row as $r)
-	        {
-	        	if ($r == 0)	$project_empty = 1;
-	        	else	$project_empty = 0;
-	        }
-	    }
+		$project_empty = $_SESSION["project_empty"];
 
 	    if ($project_empty == 1) {
 	    	echo "<h3>No projects available.</h3>";
 	    }
 
 	    else {
-			$result = mysqli_query($conn,"SELECT * FROM projects");
+	    	$projects = $_SESSION["projects"];
 
 			echo "<table border='1' class=\"viewproj_table\">
 			<tr>
@@ -65,7 +48,7 @@
 				<th>Tasks</th>
 			</tr>";
 
-			while($row = mysqli_fetch_array($result)) {
+			foreach ($projects as $row) {
 				echo "<tr>";
 					echo "<td>" . $row['code'] . "</td>";
 					echo "<td class=\"proj-name\">" . $row['name'] . "</td>";
@@ -76,8 +59,6 @@
 			}
 			echo "</table>";
 		}
-
-		mysqli_close($conn);
 		?>
 
 	</div>

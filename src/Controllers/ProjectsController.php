@@ -17,8 +17,8 @@ class ProjectsController {
 	}
 
 	public function view_projects (Request $request, Response $response, $args) {
-		//$ProjectModel = new \Netzwelt\Models\Projects\ViewProjectModel($this->ci);
-		//return $ProjectModel->view_projects($request, $response, $args);
+		$ProjectModel = new \Netzwelt\Models\Projects\ViewProjectModel($this->ci);
+		$message = $ProjectModel->view_projects($request, $response, $args);
 		return $this->ci->renderer->render($response, '\Projects\view_projects.php', $args);
 	}
 
