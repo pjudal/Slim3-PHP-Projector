@@ -28,6 +28,17 @@ class ProjectsController {
 
 	public function create_project (Request $request, Response $response, $args) {
 		$ProjectModel = new \Netzwelt\Models\Projects\CreateProjectModel($this->ci);
+
+		/*
+		$validationErrors = $projectModel->createProject($request, $args);
+		if (count($validationErrors) === 0) {
+			return $this->ci->renderer->render($response, '...', $args);
+		} 
+
+		// show errors
+		return $this->ci->renderer->render($response, '....', [errors => validationErrors]);
+		*/
+		
 		$success = $ProjectModel->create_project($request, $response, $args);
 		if ($success)
 			return $this->ci->renderer->render($response, '\Projects\create_success.php', $args);

@@ -25,7 +25,6 @@ class PersonsController {
 		$success = $PersonModel->create_person($request, $response, $args);
 		if ($success)
 			return $this->ci->renderer->render($response, '\Persons\create_success.php', $args);
-		else
-			return $this->ci->renderer->render($response, '\Persons\create_fail.php', $args);
+		return $this->ci->renderer->render($response, '\Persons\create_fail.php', $args);
 	}
 }

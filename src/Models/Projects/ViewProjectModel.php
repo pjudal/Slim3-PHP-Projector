@@ -14,26 +14,11 @@ class ViewProjectModel {
 	//Constructor
 	public function __construct(Container $ci) {
 		$this->ci = $ci;
+		$this->ProjectsDao = new \Netzwelt\Data\ProjectsDao($this->ci->get('settings'));
 	}
 
 	public function view_projects (Request $request, Response $response, $args) {
-		//return $this->ci->renderer->render($response, '\Projects\view_projects.php', $args);
-
-		//Create connection
-		$settings = $this->ci->get('settings');
-		$db_connection = $settings['db_connection'];
-
-		$servername = $db_connection["servername"];
-		$username = $db_connection["username"];
-		$password = $db_connection["password"];
-		$dbname = $db_connection["dbname"];
-		
-		$conn = new \mysqli($servername, $username, $password, $dbname);
-
-		// Check connection
-		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
-		}
+		$conn = $this->ProjectsDao->getConnection();
 
 		$stmt = $conn->prepare("SELECT EXISTS(SELECT 1 FROM projects)");
 		$stmt->execute();

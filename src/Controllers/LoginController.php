@@ -28,7 +28,7 @@ class LoginController {
 	public function verification (Request $request, Response $response, $args) {
 		$success =  $this->LoginModel->verification($request, $response, $args);
 		if ($success)	return $response->withRedirect("/projects", 200);
-		else	return $this->ci->renderer->render($response, '\Login\login_failed.php', $args);
+		return $this->ci->renderer->render($response, '\Login\login_failed.php', $args);
 	}
 
 	public function logout_landing (Request $request, Response $response, $args) {
