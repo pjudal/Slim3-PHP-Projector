@@ -81,12 +81,28 @@ class LoginModel {
 
 		// Otherwise, tell controller to render login_failed page.
 		else {
-			$args["valid_email"] = $valid_email;
-			$args["valid_pass"] = $valid_pass;
-			$args["email_format"] = $email_format;
-			$args["email_length"] = $email_length;
-			$args["pass_length"] = $pass_length;
-			$_SESSION["args"] = $args;
+			$_SESSION["loginErrors"] = [];
+
+			if ($valid_email == 0) {
+				array_push($_SESSION["loginErrors"], "Unregistered email.");
+			}
+
+			if ($valid_pass == 0) {
+				 array_push($_SESSION["loginErrors"], "Incorrect password.");
+			}
+
+			if ($email_format == 0) {
+				array_push($_SESSION["loginErrors"], "Incorrect e-mail format.");
+			}
+
+			if ($email_length == 0) {
+				array_push($_SESSION["loginErrors"], "E-mail length must be between 5 - 200 characters.");
+			}
+
+			if ($pass_length == 0) {
+				array_push($_SESSION["loginErrors"], "Passwords must be 7 - 11 characters long.");
+			}
+
 			return FALSE;
 		}
 	}

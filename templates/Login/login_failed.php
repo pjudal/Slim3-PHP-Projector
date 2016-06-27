@@ -16,24 +16,10 @@
       <h3>LOGIN FAILED</h3>
       <p>
         <?php
-          if ($args["valid_email"] == 0) {
-            echo "Unregistered email.</p><p>";
-          }
-
-          if ($args["valid_pass"] == 0) {
-            echo "Incorrect password.</p><p>";
-          }
-
-          if ($args["email_format"] == 0) {
-            echo "Incorrect e-mail format.</p><p>";
-          }
-
-          if ($args["email_length"] == 0) {
-            echo "E-mail length must be between 5 - 200 characters.</p><p>";
-          }
-
-          if ($args["pass_length"] == 0) {
-            echo "Passwords must be 7 - 11 characters long.";
+          if (count($_SESSION["loginErrors"]) != 0) {
+            foreach ($_SESSION["loginErrors"] as $error) {
+              echo $error . "</p><p>";
+            }
           }
         ?>
       </p>
