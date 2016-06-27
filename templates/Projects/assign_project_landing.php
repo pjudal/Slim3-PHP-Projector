@@ -54,9 +54,6 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-
-		    //unset($_SESSION["assigned_persons"]);
-		    //unset($_SESSION["unassigned_persons"]);
 		    ?>
 
 		</div>

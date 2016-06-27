@@ -30,9 +30,9 @@
 	    <p class="welcome_user">Welcome, <?php echo $_SESSION["current_user"];?>!</p>
 
 		<?php
-		$project_empty = $_SESSION["project_empty"];
+		$projectEmpty = $_SESSION["projectEmpty"];
 
-	    if ($project_empty == 1) {
+	    if ($projectEmpty == 1) {
 	    	echo "<h3>No projects available.</h3>";
 	    }
 

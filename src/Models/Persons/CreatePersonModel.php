@@ -14,48 +14,22 @@ class CreatePersonModel {
 	//Constructor
 	public function __construct(Container $ci) {
 		$this->ci = $ci;
+		$this->PersonsDao = new \Netzwelt\Data\PersonsDao($this->ci->get('settings'));
 	}
 
 	public function create_person (Request $request, Response $response, $args) {
-		// Create connection
-		$settings = $this->ci->get('settings');
-		$db_connection = $settings['db_connection'];
-
-		$servername = $db_connection["servername"];
-		$username = $db_connection["username"];
-		$password = $db_connection["password"];
-		$dbname = $db_connection["dbname"];
-		
-		$conn = new \mysqli($servername, $username, $password, $dbname);
-
 		$last_name = $_POST["last_name"];
 		$first_name = $_POST["first_name"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 
-		// Check connection
-		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
-		}		
+		// Create connection
+		$pdo = $this->PersonsDao->getConnection();
 
-		$stmt = $conn->prepare("INSERT INTO persons
-				(last_name,
-				first_name,
-				username,
-				password)
-			VALUES
-				(?,
-				?,
-				?,
-				?)");
+		$insertSuccessful = $this->PersonsDao->insertPerson($pdo, $last_name, $first_name,
+			$username, $password);
 
-		$stmt->bind_param("ssss", $last_name, $first_name, $username, $password);
-		// If query was successful tell controller to render success page, otherwise the failure page
-		if ($stmt->execute()) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
+		if ($insertSuccessful == 1)	return TRUE;
+		else return FALSE;
 	}
 }

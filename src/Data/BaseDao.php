@@ -22,8 +22,14 @@ abstract class BaseDao {
 		    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
 		    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
 		    \PDO::ATTR_EMULATE_PREPARES   => false,
-		];
-		$PDO = new \PDO($dsn, $username, $password, $options);
-		return $PDO;
+		];		
+
+
+		try {
+		    $pdo = new \PDO($dsn, $username, $password, $options);
+		    return $pdo;
+		} catch(\PDOException $e) {
+		    die('Could not connect to the database:' . $e);
+		}
 	}
 }

@@ -18,29 +18,18 @@ class ViewProjectModel {
 	}
 
 	public function view_projects (Request $request, Response $response, $args) {
-		$conn = $this->ProjectsDao->getConnection();
+		$pdo = $this->ProjectsDao->getConnection();
 
-		$stmt = $conn->prepare("SELECT EXISTS(SELECT 1 FROM projects)");
-		$stmt->execute();
-		$result = $stmt->get_result();
+	    $projectEmpty = $this->ProjectsDao->isEmpty($pdo);
+	    if ($projectEmpty == 0)	$projectEmpty = 1;
+	    else $projectEmpty = 0;
 
-		while ($row = $result->fetch_array(MYSQLI_NUM))
-	    {
-	        foreach ($row as $r)
-	        {
-	        	if ($r == 0)	$project_empty = 1;
-	        	else	$project_empty = 0;
-	        }
-	    }
-	    $_SESSION["project_empty"] = $project_empty;
-	    if ($project_empty == 0) {
-	    	$projects = [];
-	    	$result = mysqli_query($conn,"SELECT * FROM projects");
-	    	while($row = mysqli_fetch_array($result)) {
-	    		array_push($projects, $row);
-	    	}
+	    $_SESSION["projectEmpty"] = $projectEmpty;
+
+	    if ($projectEmpty == 0) {
+	    	$projects = $this->ProjectsDao->selectProjects($pdo);
 	    	$_SESSION["projects"] = $projects;
 	    }
-	    return $project_empty;
+	    return $projectEmpty;
 	}
 }
