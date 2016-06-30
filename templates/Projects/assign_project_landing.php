@@ -36,7 +36,6 @@
 			echo "<div id=\"content\">";
 		    ?>
 		    <div ng-include src="'/../load.php'"></div>
-		    
 			</div>
 		<!--script src="/../js/general.js"></script-->
 	</div>

@@ -47,7 +47,7 @@ class AssignProjectModel {
 
 	public function assign_project (Request $request, Response $response, $args) {
 		$person_id = $_POST['person_id'];
-		$project_id = $_POST['proj_id'];
+		$project_id = $_POST['project_id'];
 
 		// Create connection
 		$pdo = $this->ProjectsDao->getConnection();
