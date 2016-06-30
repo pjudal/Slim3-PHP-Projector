@@ -68,7 +68,7 @@ class AssignProjectModel {
 
 	public function remove (Request $request, Response $response, $args) {
 		$person_id = $_POST['person_id'];
-		$project_id = $_POST['proj_id'];
+		$project_id = $_POST['project_id'];
 		
 		// Create connection
 		$pdo = $this->ProjectsDao->getConnection();
@@ -84,8 +84,7 @@ class AssignProjectModel {
 		$unassigned_persons = $this->ProjectsDao->returnUnassignedID($pdo, $project_id);
 		$_SESSION["unassigned_persons"] = $unassigned_persons;
 
-		//echo "Model Part: OK. Person removed. Job's done.";
-		echo $person_id;
+		echo "Model Part: OK. Person removed. Job's done.";
 	}
 
 }

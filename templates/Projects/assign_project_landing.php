@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Projector</title>
   <link rel="stylesheet" href="/../css/projects.css">
-  <!--script type="text/javascript" src="/../js/jquery-1.8.2.min.js"></script-->
   <script src="/../js/angular.js"></script>
   <script type="text/javascript" src="/../js/app.js"></script>
 </head>
@@ -37,7 +36,6 @@
 		    ?>
 		    <div ng-include src="'/../load.php'"></div>
 			</div>
-		<!--script src="/../js/general.js"></script-->
 	</div>
 
 </body>
