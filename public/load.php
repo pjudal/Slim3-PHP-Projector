@@ -3,16 +3,19 @@
 	session_start();
 
 	$proj_name = $_SESSION["proj_name"];
+	$proj_id = $_SESSION["proj_id"];
 	$assigned = $_SESSION["assigned_persons"];
 	$unassigned = $_SESSION["unassigned_persons"];
 
-	echo "<select id=\"assign_sel\">";
+	echo "<select id=\"assign_sel\" ng-model=\"person_id\">";
 	foreach ($unassigned as $row) {
 		echo "<option value=" . $row['id'] . ">"
 		. $row['first_name'] . " " . $row['last_name'] . "</option>";
 	}
 	echo "</select>";
-	echo "<input class=\"sel_button\" type=\"submit\" value=\"Add\">";
+	echo "<input class=\"sel_button\" type=\"submit\" value=\"Add\"
+		ng-click=\"assign(person_id, " . $proj_id . ")\"
+			>";
 	echo "</form>";
 
 
@@ -27,5 +30,5 @@
 		echo "</tr>";
 	}
 	echo "</table>";
-
+	echo "{{ PostDataResponse }}";
 ?>
